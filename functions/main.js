@@ -79,3 +79,24 @@ function getAverageScore(data) {
   ); 
 
   // Задание 3
+  function getPersonData( secretData ) {
+    return {
+      firstName: getName(secretData.aaa),  
+      lastName: getName(secretData.bbb)
+    };
+  }
+
+  function getName(number) {
+    if (number == 0) {
+      return "Родриго";
+      }; 
+    if (number == 1) {
+      return "Эмильо";
+    };
+  } 
+  
+  getPersonData({
+    aaa: 1,
+    bbb: 0,
+  });
+  
