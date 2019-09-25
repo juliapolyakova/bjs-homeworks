@@ -10,7 +10,7 @@ function checkBirthday(birthday) {
     let now = Date.now();
     birthday = new Date(document.getElementById('birthday').value);
     let diff = now - birthday;
-    let age = Math.floor((diff / 1000 / 60 / 60 / 24 / 1096) * 4);
+    let age = Math.floor((diff / 1000 / 60 / 60 / 24 / 1461) * 4);
     if (age >= 18) {
         return true;
     } else {
