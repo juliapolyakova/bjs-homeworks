@@ -1,21 +1,22 @@
-
 function compareArrays(arr1, arr2) {
-	return (arr1.length === arr2.length) &&	(arr1.every(item => arr1.indexOf(item) === arr2.indexOf(item)));
+	return (arr1.length === arr2.length) &&	(arr1.every((item, index) => item === arr2[index]));
 	
 }
 
-compareArrays([8, 1, 2], [8, 1, 2]);
+//compareArrays([8, 1, 2], [8, 1, 2]);
 
 function memoize(fn, limit) {
   const results = [];
-  return (args) => {
+  return ( ...args) => {
     let result = results.find(item => compareArrays(item.args, Array.from(args)));
+
 
     if (result) {
       console.log("Результат берется из памяти");
-      return result;
+      console.log(result.result);
+      return result.result;
     } else {
-      let result = fn(args);
+      let result = fn( ...args);
       results.push({
         args: Array.from(args),
         result: result,
@@ -25,7 +26,8 @@ function memoize(fn, limit) {
 			results.shift();
 		}
     console.log("Результат берется не из памяти");
-    return result;
+    console.log(results);
+    return results;
   }
 
 }
@@ -33,5 +35,7 @@ function memoize(fn, limit) {
 const sum = (a, b) => a + b;
 
 const mSum = memoize(sum, 2);
-mSum( 3, 4 ); 
+mSum( 3, 4 );
+mSum( 1, 3 ); 
+mSum( 3, 4 );
 mSum( 1, 3 ); 
